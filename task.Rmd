@@ -1,0 +1,235 @@
+---
+title: "Tasks"
+author: "Camille Benoit"
+date: "03/12/2020"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r}
+.libPaths("C:/Program Files (x86)/R/win-library/4.0")
+```
+
+# Task number 1
+### Function + for loop
+
+Instructions are to write a function that :
+
+- Takes data frame, row selection and column selection as arguments
+
+- Subsets data according to the given selections. Possible selections are: by index/indexes, by name/names, by logical vector
+
+- For each column of the subseted data performs some computations: for numeric data – any of sum(), mean(), sd(), etc and for non-numeric data (characters and logical vectors, factors) – frequency table
+
+- Returns an output as a data frame and calculation results as a list (subset + summary)
+
+Here is what I wrote for this function.
+
+```{r}
+my_function <- function(data, rows, columns){
+  subset <- data[rows, columns, drop = FALSE]
+  res <- list(subset)
+  for (col in colnames(subset)){
+    if (is.numeric(subset[[col]])){
+      meancol <- list(mean(subset[[col]]))
+      res <- c(res, meancol)
+    } else {
+      tablecol <- list(table(subset[[col]]))
+      res <- c(res, tablecol)
+    }
+  }
+  names(res) <- c("Subset", colnames(subset))
+  res
+}
+```
+
+I used iris dataframe to do some tests.
+
+```{r}
+head(iris)
+```
+
+Here are my results :
+
+```{r}
+my_function(iris, 1:50 , c("Petal.Length","Sepal.Width", "Species"))
+```
+
+```{r}
+my_function(iris, c(1:25,55:65,110:122) , c(4,2,5))
+```
+
+```{r}
+my_function(iris, 45:102 , 3:5)
+```
+
+# Task number 2
+### Function + looping function
+
+Instructions for this task are to rewrite my previous function using *apply(), to add formal argument to split the data and to add calculation function as a formal argument to the function.
+
+Here is what I wrote.
+
+```{r}
+my_new_function <- function(data, rows, columns, f, splt){
+  subset <- data[rows, columns, drop = FALSE]
+  spltcol <- data[rows, splt]
+  concat_subset <- cbind(subset, spltcol)
+  res <- list(subset)
+  for (col in colnames(subset)){
+    if (is.numeric(subset[[col]])){
+      newres <- list(tapply(X = concat_subset[[col]], INDEX = spltcol, FUN = f))
+    }else{
+      newres <- list(table(subset[[col]]))
+    }
+    res <- c(res, newres)
+  }
+  names(res) <- c("Subset" ,colnames(subset))
+  res
+}
+```
+
+And some examples :
+
+```{r}
+my_new_function(iris, 1:150, 2:4, sum, "Species")
+```
+
+```{r}
+my_new_function(iris, 1:75, 1:3, mean, 5)
+```
+
+```{r}
+my_new_function(iris, 6:23, c(1,2), max, 5)
+```
+
+# Task 3
+### Weather's data tidying and cleaning 
+
+What I have to do for this task is to explore, tidy and prepare the dataset weather.rds
+
+#### Raw data
+
+Here is the raw data, with no modification (first 15 rows).
+
+```{r}
+weather <- readRDS("weather.rds")
+head(weather, n=15)
+```
+
+#### Instruction list
+
+I see that we have two issues with our raw data.
+
+1/ Our variables are in a column named "measure" and Column headers are values (X1 -> X31) instead of variable names
+
+2/ The first column with only index is useless.
+
+To deal with that I will use tidyverse library.
+
+```{r}
+library(tidyverse)
+```
+
+As we are working with weather and already have "Month" and "Year" column, I will assume that X1...X31 correspond to days. After exploring data, I saw that 31st days corresponding to months with only 30 days contain NA values.
+
+First, I remove the first column which is useless.
+
+```{r}
+weather2 <- weather[, -1]
+head(weather2, n=10)
+```
+
+Then I gather all measurements by days and I will delete NA values (na.rm = TRUE).
+
+```{r}
+weather_gather <- gather(weather2, day, measurement_value, X1:X31, na.rm = TRUE)
+head(weather_gather, n = 10)
+tail(weather_gather, n= 10)
+```
+
+I spread the column measure to have a column for each measure.
+
+```{r}
+tidy_weather <- spread(weather_gather, measure, measurement_value)
+head(tidy_weather, n = 10)
+```
+
+Finally I have in my dataset :
+
+- Each object / observation is presented in a different row
+
+- Each measured variable is presented in a different column
+
+- Each cell – an intersection of given row and column – presents a value of the given variable for the given observation
+
+Here is the **final instruction list** :
+
+```{R}
+weather2 <- weather[, -1]
+weather_gather <- gather(weather2, day, measurement_value, X1:X31, na.rm = TRUE)
+tidy_weather <- spread(weather_gather, measure, measurement_value)
+```
+
+#### Tidy data
+
+```{r}
+head(tidy_weather)
+```
+
+#### Cleaning and preparing the data
+
+First thing I'm going to delete the "X" before the number of days in day column and concatenate day, month and year column into on column for date. I need to change the format to date so it will not be a string anymore.
+
+```{r}
+cleaned_weather <- tidy_weather
+cleaned_weather[['day']] <- str_replace(cleaned_weather[['day']], "X", "")
+cleaned_weather <- unite(cleaned_weather, date, year, month, day, sep = "/")
+cleaned_weather[['date']] <- as.Date(cleaned_weather[['date']], "%Y/%m/%d")
+head(cleaned_weather)
+```
+
+Also, I saw that there are "T" in precipitation column. It means "trace" and we can change this by 0.
+
+```{r}
+cleaned_weather[['PrecipitationIn']] <- str_replace(cleaned_weather[['PrecipitationIn']], "T", "0.00")
+head(cleaned_weather)
+```
+
+And finally change our values' format to numeric ones so I can use summary function after. To do so, I need to first to switch Events and CloudCover columns.
+
+```{r}
+cleaned_weather <- select(cleaned_weather, date, Events, CloudCover:WindDirDegrees)
+cleaned_weather[, 3:23] <- sapply(cleaned_weather[, 3:23], as.numeric)
+head(cleaned_weather)
+```
+
+Now that everything is fine I can check if there are missing values.
+
+```{r}
+summary(cleaned_weather)
+```
+
+We can see that there are 6 NA values in Max.Gust.SpeedMPH, we know thanks to head that there are Empty values in Events too. We can also see that there is a mistake in Max.Humidity column. Humidity is measured by % so the maximum should be 100 instead of 1000.
+
+```{r}
+cleaned_weather[["Events"]][cleaned_weather[["Events"]] == ""] <- "none"
+cleaned_weather[["Max.Humidity"]][cleaned_weather[["Max.Humidity"]] == 1000] <- 100
+```
+
+As I don't know what to do with NA values in Max.Gust.SpeedMPH I decided to leave it like that.
+
+#### The code book with final cleaned dataset
+
+```{r}
+head(cleaned_weather)
+summary(cleaned_weather)
+boxplot(cleaned_weather[, 3:22])
+boxplot(cleaned_weather[,23])
+```
+
+# Task 4
+### function + dplyr
+
+Instructions are to do the same as for task 1 but by using dplyr functions.

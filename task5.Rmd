@@ -1,0 +1,135 @@
+---
+title: "task5"
+author: "Camille Benoit"
+date: "28/12/2020"
+output: html_document
+---
+
+```{r}
+.libPaths("C:/Program Files (x86)/R/win-library/4.0")
+library(tidyr)
+library(tibble)
+library(ggplot2)
+library(gapminder)
+library(dplyr)
+```
+
+## Iris
+
+```{r}
+plot_iris_long <- rowid_to_column(iris) %>% 
+  gather(measure, values, "Sepal.Length":"Petal.Width") %>% 
+  separate(measure, c("part", "measure"), sep = "\\.", remove = TRUE) %>%
+  spread(measure, values) %>% 
+  ggplot(aes ( x = Length, y = Width, color = part)) + geom_point()
+
+plot_iris_long
+```
+
+## Gapminder
+
+### 1
+
+```{r}
+gp1 <- gapminder %>% 
+  filter(year == 2007) %>% ggplot(aes(x= gdpPercap, y=lifeExp, color = continent, size = pop)) + geom_point() + scale_x_continuous(trans='log10', breaks = c(1000,10000))
+
+gp1
+```
+
+### 2
+
+```{r}
+gp2 <- gapminder %>% 
+  group_by(continent, year) %>% 
+  summarise(meanLifeExp=mean(lifeExp), .groups = 'drop') %>% 
+  ggplot(aes(x=year, y= meanLifeExp, color = continent)) + geom_point() + geom_line()
+
+gp2
+```
+
+```{r}
+gp3 <- gapminder %>% 
+  group_by(continent, year) %>% 
+  summarise(totalPop=  sum(!!sym("pop")), .groups = 'drop') %>% 
+  ggplot(aes(x=year, y= totalPop, color = continent)) + geom_point() + geom_line()
+
+
+gp3
+```
+
+### 3
+
+how many countries per continent in 2007
+
+```{r}
+gp4 <- gapminder %>% 
+  filter(year == 2007) %>%  
+  ggplot(aes(x=continent, fill = continent)) + geom_bar()
+
+gp4
+```
+
+total pop per continent in 2007
+
+```{r}
+gp5 <- gapminder %>% 
+  filter(year == 2007) %>%  
+  select(continent, pop) %>%  
+  group_by(continent) %>%  
+  summarise(totalPop = sum(pop), .groups = "drop") %>% 
+  ggplot(aes(x=continent, y= totalPop, color = continent)) + geom_bar(stat =  "identity")
+
+gp5
+```
+
+evolution of population in france
+
+```{r}
+gp6 <- gapminder %>% 
+  filter(country == "France") %>% 
+  select(year, pop) %>% 
+  ggplot(aes(x=year, y= pop, fill = year)) + geom_bar(stat =  "identity")
+
+
+gp6
+```
+
+### 4
+
+```{r}
+gp7 <- gapminder %>% 
+  group_by(continent, year) %>% 
+  ggplot(aes(x=gdpPercap, y= lifeExp, color = continent, size = pop)) + geom_point() + facet_wrap(. ~ year, nrow = 3, ncol = 4, scales= "free") + scale_x_continuous(trans='log10', breaks = c(1000,10000))
+
+gp7
+```
+
+### 5 
+
+```{r}
+head(airquality)
+```
+
+```{r}
+airquality2 <- airquality %>% 
+  gather(Measure, Value, Ozone:Temp) %>% 
+  drop_na() %>% 
+  ggplot(aes(x=Day, y= Value, color = Measure)) + geom_point() + geom_line()+ facet_grid(Measure ~ Month, scales = "free")
+
+airquality2
+```
+
+### 6 
+
+```{r}
+gapminder %>% 
+  filter(year == 2007) %>% 
+  ggplot(aes(x= pop, fill = continent, color = continent)) + geom_density(alpha = 0.3) + guides(fill = F)  + scale_x_continuous(trans='log10')
+```
+
+```{r}
+gapminder %>% 
+  filter(year == 1992) %>% 
+  ggplot(aes(x= lifeExp, fill = continent, color = continent)) + geom_density(alpha = 0.3) + guides(fill = F)  + scale_x_continuous(trans='log10')
+```

@@ -1,0 +1,1519 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Tasks},
+  pdfauthor={Camille Benoit},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{Tasks}
+\author{Camille Benoit}
+\date{03/12/2020}
+
+\begin{document}
+\maketitle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{.libPaths}\NormalTok{(}\StringTok{"C:/Program Files (x86)/R/win-library/4.0"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{task-number-1}{%
+\section{Task number 1}\label{task-number-1}}
+
+\hypertarget{function-for-loop}{%
+\subsubsection{Function + for loop}\label{function-for-loop}}
+
+Instructions are to write a function that :
+
+\begin{itemize}
+\item
+  Takes data frame, row selection and column selection as arguments
+\item
+  Subsets data according to the given selections. Possible selections
+  are: by index/indexes, by name/names, by logical vector
+\item
+  For each column of the subseted data performs some computations: for
+  numeric data -- any of sum(), mean(), sd(), etc and for non-numeric
+  data (characters and logical vectors, factors) -- frequency table
+\item
+  Returns an output as a data frame and calculation results as a list
+  (subset + summary)
+\end{itemize}
+
+Here is what I wrote for this function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_function <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(data, rows, columns)\{}
+\NormalTok{  subset <-}\StringTok{ }\NormalTok{data[rows, columns]}
+\NormalTok{  res <-}\StringTok{ }\KeywordTok{list}\NormalTok{(subset)}
+  \ControlFlowTok{for}\NormalTok{ (col }\ControlFlowTok{in} \KeywordTok{colnames}\NormalTok{(subset))\{}
+    \ControlFlowTok{if}\NormalTok{ (}\KeywordTok{is.numeric}\NormalTok{(subset[[col]]))\{}
+\NormalTok{      meancol <-}\StringTok{ }\KeywordTok{list}\NormalTok{(}\KeywordTok{mean}\NormalTok{(subset[[col]]))}
+\NormalTok{      res <-}\StringTok{ }\KeywordTok{c}\NormalTok{(res, meancol)}
+\NormalTok{    \} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{      tablecol <-}\StringTok{ }\KeywordTok{list}\NormalTok{(}\KeywordTok{table}\NormalTok{(subset[[col]]))}
+\NormalTok{      res <-}\StringTok{ }\KeywordTok{c}\NormalTok{(res, tablecol)}
+\NormalTok{    \}}
+\NormalTok{  \}}
+  \KeywordTok{names}\NormalTok{(res) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Subset"}\NormalTok{, }\KeywordTok{colnames}\NormalTok{(subset))}
+\NormalTok{  res}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+I used iris dataframe to do some tests.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(iris)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa
+\end{verbatim}
+
+Here are my results :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{my_function}\NormalTok{(iris, }\DecValTok{1}\OperatorTok{:}\DecValTok{50}\NormalTok{ , }\KeywordTok{c}\NormalTok{(}\StringTok{"Petal.Length"}\NormalTok{,}\StringTok{"Sepal.Width"}\NormalTok{, }\StringTok{"Species"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $Subset
+##    Petal.Length Sepal.Width Species
+## 1           1.4         3.5  setosa
+## 2           1.4         3.0  setosa
+## 3           1.3         3.2  setosa
+## 4           1.5         3.1  setosa
+## 5           1.4         3.6  setosa
+## 6           1.7         3.9  setosa
+## 7           1.4         3.4  setosa
+## 8           1.5         3.4  setosa
+## 9           1.4         2.9  setosa
+## 10          1.5         3.1  setosa
+## 11          1.5         3.7  setosa
+## 12          1.6         3.4  setosa
+## 13          1.4         3.0  setosa
+## 14          1.1         3.0  setosa
+## 15          1.2         4.0  setosa
+## 16          1.5         4.4  setosa
+## 17          1.3         3.9  setosa
+## 18          1.4         3.5  setosa
+## 19          1.7         3.8  setosa
+## 20          1.5         3.8  setosa
+## 21          1.7         3.4  setosa
+## 22          1.5         3.7  setosa
+## 23          1.0         3.6  setosa
+## 24          1.7         3.3  setosa
+## 25          1.9         3.4  setosa
+## 26          1.6         3.0  setosa
+## 27          1.6         3.4  setosa
+## 28          1.5         3.5  setosa
+## 29          1.4         3.4  setosa
+## 30          1.6         3.2  setosa
+## 31          1.6         3.1  setosa
+## 32          1.5         3.4  setosa
+## 33          1.5         4.1  setosa
+## 34          1.4         4.2  setosa
+## 35          1.5         3.1  setosa
+## 36          1.2         3.2  setosa
+## 37          1.3         3.5  setosa
+## 38          1.4         3.6  setosa
+## 39          1.3         3.0  setosa
+## 40          1.5         3.4  setosa
+## 41          1.3         3.5  setosa
+## 42          1.3         2.3  setosa
+## 43          1.3         3.2  setosa
+## 44          1.6         3.5  setosa
+## 45          1.9         3.8  setosa
+## 46          1.4         3.0  setosa
+## 47          1.6         3.8  setosa
+## 48          1.4         3.2  setosa
+## 49          1.5         3.7  setosa
+## 50          1.4         3.3  setosa
+## 
+## $Petal.Length
+## [1] 1.462
+## 
+## $Sepal.Width
+## [1] 3.428
+## 
+## $Species
+## 
+##     setosa versicolor  virginica 
+##         50          0          0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{my_function}\NormalTok{(iris, }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{25}\NormalTok{,}\DecValTok{55}\OperatorTok{:}\DecValTok{65}\NormalTok{,}\DecValTok{110}\OperatorTok{:}\DecValTok{122}\NormalTok{) , }\KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{5}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $Subset
+##     Petal.Width Sepal.Width    Species
+## 1           0.2         3.5     setosa
+## 2           0.2         3.0     setosa
+## 3           0.2         3.2     setosa
+## 4           0.2         3.1     setosa
+## 5           0.2         3.6     setosa
+## 6           0.4         3.9     setosa
+## 7           0.3         3.4     setosa
+## 8           0.2         3.4     setosa
+## 9           0.2         2.9     setosa
+## 10          0.1         3.1     setosa
+## 11          0.2         3.7     setosa
+## 12          0.2         3.4     setosa
+## 13          0.1         3.0     setosa
+## 14          0.1         3.0     setosa
+## 15          0.2         4.0     setosa
+## 16          0.4         4.4     setosa
+## 17          0.4         3.9     setosa
+## 18          0.3         3.5     setosa
+## 19          0.3         3.8     setosa
+## 20          0.3         3.8     setosa
+## 21          0.2         3.4     setosa
+## 22          0.4         3.7     setosa
+## 23          0.2         3.6     setosa
+## 24          0.5         3.3     setosa
+## 25          0.2         3.4     setosa
+## 55          1.5         2.8 versicolor
+## 56          1.3         2.8 versicolor
+## 57          1.6         3.3 versicolor
+## 58          1.0         2.4 versicolor
+## 59          1.3         2.9 versicolor
+## 60          1.4         2.7 versicolor
+## 61          1.0         2.0 versicolor
+## 62          1.5         3.0 versicolor
+## 63          1.0         2.2 versicolor
+## 64          1.4         2.9 versicolor
+## 65          1.3         2.9 versicolor
+## 110         2.5         3.6  virginica
+## 111         2.0         3.2  virginica
+## 112         1.9         2.7  virginica
+## 113         2.1         3.0  virginica
+## 114         2.0         2.5  virginica
+## 115         2.4         2.8  virginica
+## 116         2.3         3.2  virginica
+## 117         1.8         3.0  virginica
+## 118         2.2         3.8  virginica
+## 119         2.3         2.6  virginica
+## 120         1.5         2.2  virginica
+## 121         2.3         3.2  virginica
+## 122         2.0         2.8  virginica
+## 
+## $Petal.Width
+## [1] 0.9755102
+## 
+## $Sepal.Width
+## [1] 3.173469
+## 
+## $Species
+## 
+##     setosa versicolor  virginica 
+##         25         11         13
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{my_function}\NormalTok{(iris, }\DecValTok{45}\OperatorTok{:}\DecValTok{102}\NormalTok{ , }\DecValTok{3}\OperatorTok{:}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $Subset
+##     Petal.Length Petal.Width    Species
+## 45           1.9         0.4     setosa
+## 46           1.4         0.3     setosa
+## 47           1.6         0.2     setosa
+## 48           1.4         0.2     setosa
+## 49           1.5         0.2     setosa
+## 50           1.4         0.2     setosa
+## 51           4.7         1.4 versicolor
+## 52           4.5         1.5 versicolor
+## 53           4.9         1.5 versicolor
+## 54           4.0         1.3 versicolor
+## 55           4.6         1.5 versicolor
+## 56           4.5         1.3 versicolor
+## 57           4.7         1.6 versicolor
+## 58           3.3         1.0 versicolor
+## 59           4.6         1.3 versicolor
+## 60           3.9         1.4 versicolor
+## 61           3.5         1.0 versicolor
+## 62           4.2         1.5 versicolor
+## 63           4.0         1.0 versicolor
+## 64           4.7         1.4 versicolor
+## 65           3.6         1.3 versicolor
+## 66           4.4         1.4 versicolor
+## 67           4.5         1.5 versicolor
+## 68           4.1         1.0 versicolor
+## 69           4.5         1.5 versicolor
+## 70           3.9         1.1 versicolor
+## 71           4.8         1.8 versicolor
+## 72           4.0         1.3 versicolor
+## 73           4.9         1.5 versicolor
+## 74           4.7         1.2 versicolor
+## 75           4.3         1.3 versicolor
+## 76           4.4         1.4 versicolor
+## 77           4.8         1.4 versicolor
+## 78           5.0         1.7 versicolor
+## 79           4.5         1.5 versicolor
+## 80           3.5         1.0 versicolor
+## 81           3.8         1.1 versicolor
+## 82           3.7         1.0 versicolor
+## 83           3.9         1.2 versicolor
+## 84           5.1         1.6 versicolor
+## 85           4.5         1.5 versicolor
+## 86           4.5         1.6 versicolor
+## 87           4.7         1.5 versicolor
+## 88           4.4         1.3 versicolor
+## 89           4.1         1.3 versicolor
+## 90           4.0         1.3 versicolor
+## 91           4.4         1.2 versicolor
+## 92           4.6         1.4 versicolor
+## 93           4.0         1.2 versicolor
+## 94           3.3         1.0 versicolor
+## 95           4.2         1.3 versicolor
+## 96           4.2         1.2 versicolor
+## 97           4.2         1.3 versicolor
+## 98           4.3         1.3 versicolor
+## 99           3.0         1.1 versicolor
+## 100          4.1         1.3 versicolor
+## 101          6.0         2.5  virginica
+## 102          5.1         1.9  virginica
+## 
+## $Petal.Length
+## [1] 4.022414
+## 
+## $Petal.Width
+## [1] 1.244828
+## 
+## $Species
+## 
+##     setosa versicolor  virginica 
+##          6         50          2
+\end{verbatim}
+
+\hypertarget{task-number-2}{%
+\section{Task number 2}\label{task-number-2}}
+
+\hypertarget{function-looping-function}{%
+\subsubsection{Function + looping
+function}\label{function-looping-function}}
+
+Instructions for this task are to rewrite my previous function using
+*apply(), to add formal argument to split the data and to add
+calculation function as a formal argument to the function.
+
+Here is what I wrote.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_new_function <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(data, rows, columns, f, splt)\{}
+\NormalTok{  subset <-}\StringTok{ }\NormalTok{data[rows, columns]}
+\NormalTok{  spltcol <-}\StringTok{ }\NormalTok{data[rows, splt]}
+\NormalTok{  concat_subset <-}\StringTok{ }\KeywordTok{cbind}\NormalTok{(subset, spltcol)}
+\NormalTok{  res <-}\StringTok{ }\KeywordTok{list}\NormalTok{(subset)}
+  \ControlFlowTok{for}\NormalTok{ (col }\ControlFlowTok{in} \KeywordTok{colnames}\NormalTok{(subset))\{}
+\NormalTok{    newres <-}\StringTok{ }\KeywordTok{list}\NormalTok{(}\KeywordTok{tapply}\NormalTok{(}\DataTypeTok{X =}\NormalTok{ concat_subset[[col]], }\DataTypeTok{INDEX =}\NormalTok{ spltcol, }\DataTypeTok{FUN =}\NormalTok{ f))}
+\NormalTok{    res <-}\StringTok{ }\KeywordTok{c}\NormalTok{(res, newres)}
+\NormalTok{  \}}
+  \KeywordTok{names}\NormalTok{(res) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Subset"}\NormalTok{ ,}\KeywordTok{colnames}\NormalTok{(subset))}
+\NormalTok{  res}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+And some examples :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{my_new_function}\NormalTok{(iris, }\DecValTok{1}\OperatorTok{:}\DecValTok{150}\NormalTok{, }\DecValTok{2}\OperatorTok{:}\DecValTok{4}\NormalTok{, sum, }\StringTok{"Species"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $Subset
+##     Sepal.Width Petal.Length Petal.Width
+## 1           3.5          1.4         0.2
+## 2           3.0          1.4         0.2
+## 3           3.2          1.3         0.2
+## 4           3.1          1.5         0.2
+## 5           3.6          1.4         0.2
+## 6           3.9          1.7         0.4
+## 7           3.4          1.4         0.3
+## 8           3.4          1.5         0.2
+## 9           2.9          1.4         0.2
+## 10          3.1          1.5         0.1
+## 11          3.7          1.5         0.2
+## 12          3.4          1.6         0.2
+## 13          3.0          1.4         0.1
+## 14          3.0          1.1         0.1
+## 15          4.0          1.2         0.2
+## 16          4.4          1.5         0.4
+## 17          3.9          1.3         0.4
+## 18          3.5          1.4         0.3
+## 19          3.8          1.7         0.3
+## 20          3.8          1.5         0.3
+## 21          3.4          1.7         0.2
+## 22          3.7          1.5         0.4
+## 23          3.6          1.0         0.2
+## 24          3.3          1.7         0.5
+## 25          3.4          1.9         0.2
+## 26          3.0          1.6         0.2
+## 27          3.4          1.6         0.4
+## 28          3.5          1.5         0.2
+## 29          3.4          1.4         0.2
+## 30          3.2          1.6         0.2
+## 31          3.1          1.6         0.2
+## 32          3.4          1.5         0.4
+## 33          4.1          1.5         0.1
+## 34          4.2          1.4         0.2
+## 35          3.1          1.5         0.2
+## 36          3.2          1.2         0.2
+## 37          3.5          1.3         0.2
+## 38          3.6          1.4         0.1
+## 39          3.0          1.3         0.2
+## 40          3.4          1.5         0.2
+## 41          3.5          1.3         0.3
+## 42          2.3          1.3         0.3
+## 43          3.2          1.3         0.2
+## 44          3.5          1.6         0.6
+## 45          3.8          1.9         0.4
+## 46          3.0          1.4         0.3
+## 47          3.8          1.6         0.2
+## 48          3.2          1.4         0.2
+## 49          3.7          1.5         0.2
+## 50          3.3          1.4         0.2
+## 51          3.2          4.7         1.4
+## 52          3.2          4.5         1.5
+## 53          3.1          4.9         1.5
+## 54          2.3          4.0         1.3
+## 55          2.8          4.6         1.5
+## 56          2.8          4.5         1.3
+## 57          3.3          4.7         1.6
+## 58          2.4          3.3         1.0
+## 59          2.9          4.6         1.3
+## 60          2.7          3.9         1.4
+## 61          2.0          3.5         1.0
+## 62          3.0          4.2         1.5
+## 63          2.2          4.0         1.0
+## 64          2.9          4.7         1.4
+## 65          2.9          3.6         1.3
+## 66          3.1          4.4         1.4
+## 67          3.0          4.5         1.5
+## 68          2.7          4.1         1.0
+## 69          2.2          4.5         1.5
+## 70          2.5          3.9         1.1
+## 71          3.2          4.8         1.8
+## 72          2.8          4.0         1.3
+## 73          2.5          4.9         1.5
+## 74          2.8          4.7         1.2
+## 75          2.9          4.3         1.3
+## 76          3.0          4.4         1.4
+## 77          2.8          4.8         1.4
+## 78          3.0          5.0         1.7
+## 79          2.9          4.5         1.5
+## 80          2.6          3.5         1.0
+## 81          2.4          3.8         1.1
+## 82          2.4          3.7         1.0
+## 83          2.7          3.9         1.2
+## 84          2.7          5.1         1.6
+## 85          3.0          4.5         1.5
+## 86          3.4          4.5         1.6
+## 87          3.1          4.7         1.5
+## 88          2.3          4.4         1.3
+## 89          3.0          4.1         1.3
+## 90          2.5          4.0         1.3
+## 91          2.6          4.4         1.2
+## 92          3.0          4.6         1.4
+## 93          2.6          4.0         1.2
+## 94          2.3          3.3         1.0
+## 95          2.7          4.2         1.3
+## 96          3.0          4.2         1.2
+## 97          2.9          4.2         1.3
+## 98          2.9          4.3         1.3
+## 99          2.5          3.0         1.1
+## 100         2.8          4.1         1.3
+## 101         3.3          6.0         2.5
+## 102         2.7          5.1         1.9
+## 103         3.0          5.9         2.1
+## 104         2.9          5.6         1.8
+## 105         3.0          5.8         2.2
+## 106         3.0          6.6         2.1
+## 107         2.5          4.5         1.7
+## 108         2.9          6.3         1.8
+## 109         2.5          5.8         1.8
+## 110         3.6          6.1         2.5
+## 111         3.2          5.1         2.0
+## 112         2.7          5.3         1.9
+## 113         3.0          5.5         2.1
+## 114         2.5          5.0         2.0
+## 115         2.8          5.1         2.4
+## 116         3.2          5.3         2.3
+## 117         3.0          5.5         1.8
+## 118         3.8          6.7         2.2
+## 119         2.6          6.9         2.3
+## 120         2.2          5.0         1.5
+## 121         3.2          5.7         2.3
+## 122         2.8          4.9         2.0
+## 123         2.8          6.7         2.0
+## 124         2.7          4.9         1.8
+## 125         3.3          5.7         2.1
+## 126         3.2          6.0         1.8
+## 127         2.8          4.8         1.8
+## 128         3.0          4.9         1.8
+## 129         2.8          5.6         2.1
+## 130         3.0          5.8         1.6
+## 131         2.8          6.1         1.9
+## 132         3.8          6.4         2.0
+## 133         2.8          5.6         2.2
+## 134         2.8          5.1         1.5
+## 135         2.6          5.6         1.4
+## 136         3.0          6.1         2.3
+## 137         3.4          5.6         2.4
+## 138         3.1          5.5         1.8
+## 139         3.0          4.8         1.8
+## 140         3.1          5.4         2.1
+## 141         3.1          5.6         2.4
+## 142         3.1          5.1         2.3
+## 143         2.7          5.1         1.9
+## 144         3.2          5.9         2.3
+## 145         3.3          5.7         2.5
+## 146         3.0          5.2         2.3
+## 147         2.5          5.0         1.9
+## 148         3.0          5.2         2.0
+## 149         3.4          5.4         2.3
+## 150         3.0          5.1         1.8
+## 
+## $Sepal.Width
+##     setosa versicolor  virginica 
+##      171.4      138.5      148.7 
+## 
+## $Petal.Length
+##     setosa versicolor  virginica 
+##       73.1      213.0      277.6 
+## 
+## $Petal.Width
+##     setosa versicolor  virginica 
+##       12.3       66.3      101.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{my_new_function}\NormalTok{(iris, }\DecValTok{1}\OperatorTok{:}\DecValTok{75}\NormalTok{, }\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{, mean, }\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $Subset
+##    Sepal.Length Sepal.Width Petal.Length
+## 1           5.1         3.5          1.4
+## 2           4.9         3.0          1.4
+## 3           4.7         3.2          1.3
+## 4           4.6         3.1          1.5
+## 5           5.0         3.6          1.4
+## 6           5.4         3.9          1.7
+## 7           4.6         3.4          1.4
+## 8           5.0         3.4          1.5
+## 9           4.4         2.9          1.4
+## 10          4.9         3.1          1.5
+## 11          5.4         3.7          1.5
+## 12          4.8         3.4          1.6
+## 13          4.8         3.0          1.4
+## 14          4.3         3.0          1.1
+## 15          5.8         4.0          1.2
+## 16          5.7         4.4          1.5
+## 17          5.4         3.9          1.3
+## 18          5.1         3.5          1.4
+## 19          5.7         3.8          1.7
+## 20          5.1         3.8          1.5
+## 21          5.4         3.4          1.7
+## 22          5.1         3.7          1.5
+## 23          4.6         3.6          1.0
+## 24          5.1         3.3          1.7
+## 25          4.8         3.4          1.9
+## 26          5.0         3.0          1.6
+## 27          5.0         3.4          1.6
+## 28          5.2         3.5          1.5
+## 29          5.2         3.4          1.4
+## 30          4.7         3.2          1.6
+## 31          4.8         3.1          1.6
+## 32          5.4         3.4          1.5
+## 33          5.2         4.1          1.5
+## 34          5.5         4.2          1.4
+## 35          4.9         3.1          1.5
+## 36          5.0         3.2          1.2
+## 37          5.5         3.5          1.3
+## 38          4.9         3.6          1.4
+## 39          4.4         3.0          1.3
+## 40          5.1         3.4          1.5
+## 41          5.0         3.5          1.3
+## 42          4.5         2.3          1.3
+## 43          4.4         3.2          1.3
+## 44          5.0         3.5          1.6
+## 45          5.1         3.8          1.9
+## 46          4.8         3.0          1.4
+## 47          5.1         3.8          1.6
+## 48          4.6         3.2          1.4
+## 49          5.3         3.7          1.5
+## 50          5.0         3.3          1.4
+## 51          7.0         3.2          4.7
+## 52          6.4         3.2          4.5
+## 53          6.9         3.1          4.9
+## 54          5.5         2.3          4.0
+## 55          6.5         2.8          4.6
+## 56          5.7         2.8          4.5
+## 57          6.3         3.3          4.7
+## 58          4.9         2.4          3.3
+## 59          6.6         2.9          4.6
+## 60          5.2         2.7          3.9
+## 61          5.0         2.0          3.5
+## 62          5.9         3.0          4.2
+## 63          6.0         2.2          4.0
+## 64          6.1         2.9          4.7
+## 65          5.6         2.9          3.6
+## 66          6.7         3.1          4.4
+## 67          5.6         3.0          4.5
+## 68          5.8         2.7          4.1
+## 69          6.2         2.2          4.5
+## 70          5.6         2.5          3.9
+## 71          5.9         3.2          4.8
+## 72          6.1         2.8          4.0
+## 73          6.3         2.5          4.9
+## 74          6.1         2.8          4.7
+## 75          6.4         2.9          4.3
+## 
+## $Sepal.Length
+##     setosa versicolor  virginica 
+##      5.006      6.012         NA 
+## 
+## $Sepal.Width
+##     setosa versicolor  virginica 
+##      3.428      2.776         NA 
+## 
+## $Petal.Length
+##     setosa versicolor  virginica 
+##      1.462      4.312         NA
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{my_new_function}\NormalTok{(iris, }\DecValTok{6}\OperatorTok{:}\DecValTok{23}\NormalTok{, }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{), max, }\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $Subset
+##    Sepal.Length Sepal.Width
+## 6           5.4         3.9
+## 7           4.6         3.4
+## 8           5.0         3.4
+## 9           4.4         2.9
+## 10          4.9         3.1
+## 11          5.4         3.7
+## 12          4.8         3.4
+## 13          4.8         3.0
+## 14          4.3         3.0
+## 15          5.8         4.0
+## 16          5.7         4.4
+## 17          5.4         3.9
+## 18          5.1         3.5
+## 19          5.7         3.8
+## 20          5.1         3.8
+## 21          5.4         3.4
+## 22          5.1         3.7
+## 23          4.6         3.6
+## 
+## $Sepal.Length
+##     setosa versicolor  virginica 
+##        5.8         NA         NA 
+## 
+## $Sepal.Width
+##     setosa versicolor  virginica 
+##        4.4         NA         NA
+\end{verbatim}
+
+\hypertarget{task-3}{%
+\section{Task 3}\label{task-3}}
+
+\hypertarget{weathers-data-tidying-and-cleaning}{%
+\subsubsection{Weather's data tidying and
+cleaning}\label{weathers-data-tidying-and-cleaning}}
+
+What I have to do for this task is to explore, tidy and prepare the
+dataset weather.rds
+
+\hypertarget{raw-data}{%
+\paragraph{Raw data}\label{raw-data}}
+
+Here is the raw data, with no modification (first 15 rows).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{weather <-}\StringTok{ }\KeywordTok{readRDS}\NormalTok{(}\StringTok{"weather.rds"}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(weather, }\DataTypeTok{n=}\DecValTok{15}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     X year month                   measure    X1    X2    X3    X4    X5    X6
+## 1   1 2014    12          Max.TemperatureF    64    42    51    43    42    45
+## 2   2 2014    12         Mean.TemperatureF    52    38    44    37    34    42
+## 3   3 2014    12          Min.TemperatureF    39    33    37    30    26    38
+## 4   4 2014    12            Max.Dew.PointF    46    40    49    24    37    45
+## 5   5 2014    12            MeanDew.PointF    40    27    42    21    25    40
+## 6   6 2014    12             Min.DewpointF    26    17    24    13    12    36
+## 7   7 2014    12              Max.Humidity    74    92   100    69    85   100
+## 8   8 2014    12             Mean.Humidity    63    72    79    54    66    93
+## 9   9 2014    12              Min.Humidity    52    51    57    39    47    85
+## 10 10 2014    12  Max.Sea.Level.PressureIn 30.45 30.71  30.4 30.56 30.68 30.42
+## 11 11 2014    12 Mean.Sea.Level.PressureIn 30.13 30.59 30.07 30.33 30.59 30.24
+## 12 12 2014    12  Min.Sea.Level.PressureIn 30.01  30.4 29.87 30.09 30.45 30.16
+## 13 13 2014    12       Max.VisibilityMiles    10    10    10    10    10    10
+## 14 14 2014    12      Mean.VisibilityMiles    10     8     5    10    10     4
+## 15 15 2014    12       Min.VisibilityMiles    10     2     1    10     5     0
+##       X7    X8    X9   X10   X11   X12   X13   X14   X15   X16   X17   X18
+## 1     38    29    49    48    39    39    42    45    42    44    49    44
+## 2     30    24    39    43    36    35    37    39    37    40    45    40
+## 3     21    18    29    38    32    31    32    33    32    35    41    36
+## 4     36    28    49    45    37    28    28    29    33    42    46    34
+## 5     20    16    41    39    31    27    26    27    29    36    41    30
+## 6     -3     3    28    37    27    25    24    25    27    30    32    26
+## 7     92    92   100   100    92    85    75    82    89    96   100    89
+## 8     61    70    93    95    87    75    65    68    75    85    85    73
+## 9     29    47    86    89    82    64    55    53    60    73    70    57
+## 10 30.69 30.77 30.51 29.58 29.81 29.88 29.86 29.91 30.15 30.17 29.91 29.87
+## 11 30.46 30.67 30.04  29.5 29.61 29.85 29.82 29.83 30.05 30.09 29.75 29.78
+## 12 30.24 30.51 29.49 29.43 29.44 29.81 29.78 29.78 29.91 29.92 29.69 29.71
+## 13    10    10    10    10    10    10    10    10    10    10    10    10
+## 14    10     8     2     3     7    10    10    10    10     9     6    10
+## 15     5     2     1     1     1     7    10    10    10     5     1    10
+##      X19   X20   X21   X22   X23   X24   X25   X26   X27   X28   X29   X30
+## 1     37    36    36    44    47    46    59    50    52    52    41    30
+## 2     33    32    33    39    45    44    52    44    45    46    36    26
+## 3     29    27    30    33    42    41    44    37    38    40    30    22
+## 4     25    30    30    39    45    46    58    31    34    42    26    10
+## 5     22    24    27    34    42    44    43    29    31    35    20     4
+## 6     20    20    25    25    37    41    29    28    29    27    10    -6
+## 7     69    89    85    89   100   100   100    70    70    76    64    50
+## 8     63    79    77    79    91    98    75    60    60    65    51    38
+## 9     56    69    69    69    82    96    49    49    50    53    37    26
+## 10 30.15 30.31 30.37  30.4 30.31 30.13 29.96 30.16 30.22 29.99 30.22 30.36
+## 11 29.98 30.26 30.32 30.35 30.23  29.9 29.63 30.11 30.14 29.87 30.12 30.32
+## 12 29.86 30.17 30.28  30.3 30.16 29.55 29.47 29.99 30.03 29.77    30 30.23
+## 13    10    10    10    10    10     2    10    10    10    10    10    10
+## 14    10    10     9    10     5     1     8    10    10    10    10    10
+## 15    10     7     6     4     1     0     1    10    10    10    10    10
+##      X31
+## 1     30
+## 2     25
+## 3     20
+## 4      8
+## 5      5
+## 6      1
+## 7     57
+## 8     44
+## 9     31
+## 10 30.32
+## 11 30.25
+## 12 30.13
+## 13    10
+## 14    10
+## 15    10
+\end{verbatim}
+
+\hypertarget{instruction-list}{%
+\paragraph{Instruction list}\label{instruction-list}}
+
+I see that we have two issues with our raw data.
+
+1/ Our variables are in a column named ``measure'' and Column headers
+are values (X1 -\textgreater{} X31) instead of variable names
+
+2/ The first column with only index is useless.
+
+To deal with that I will use tidyverse library.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+\end{verbatim}
+
+\begin{verbatim}
+## v ggplot2 3.3.2     v purrr   0.3.4
+## v tibble  3.0.4     v dplyr   1.0.2
+## v tidyr   1.1.2     v stringr 1.4.0
+## v readr   1.4.0     v forcats 0.5.0
+\end{verbatim}
+
+\begin{verbatim}
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+\end{verbatim}
+
+As we are working with weather and already have ``Month'' and ``Year''
+column, I will assume that X1\ldots X31 correspond to days. After
+exploring data, I saw that 31st days corresponding to months with only
+30 days contain NA values.
+
+First, I remove the first column which is useless.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{weather2 <-}\StringTok{ }\NormalTok{weather[, }\DecValTok{-1}\NormalTok{]}
+\KeywordTok{head}\NormalTok{(weather2, }\DataTypeTok{n=}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    year month                  measure    X1    X2   X3    X4    X5    X6    X7
+## 1  2014    12         Max.TemperatureF    64    42   51    43    42    45    38
+## 2  2014    12        Mean.TemperatureF    52    38   44    37    34    42    30
+## 3  2014    12         Min.TemperatureF    39    33   37    30    26    38    21
+## 4  2014    12           Max.Dew.PointF    46    40   49    24    37    45    36
+## 5  2014    12           MeanDew.PointF    40    27   42    21    25    40    20
+## 6  2014    12            Min.DewpointF    26    17   24    13    12    36    -3
+## 7  2014    12             Max.Humidity    74    92  100    69    85   100    92
+## 8  2014    12            Mean.Humidity    63    72   79    54    66    93    61
+## 9  2014    12             Min.Humidity    52    51   57    39    47    85    29
+## 10 2014    12 Max.Sea.Level.PressureIn 30.45 30.71 30.4 30.56 30.68 30.42 30.69
+##       X8    X9   X10   X11   X12   X13   X14   X15   X16   X17   X18   X19
+## 1     29    49    48    39    39    42    45    42    44    49    44    37
+## 2     24    39    43    36    35    37    39    37    40    45    40    33
+## 3     18    29    38    32    31    32    33    32    35    41    36    29
+## 4     28    49    45    37    28    28    29    33    42    46    34    25
+## 5     16    41    39    31    27    26    27    29    36    41    30    22
+## 6      3    28    37    27    25    24    25    27    30    32    26    20
+## 7     92   100   100    92    85    75    82    89    96   100    89    69
+## 8     70    93    95    87    75    65    68    75    85    85    73    63
+## 9     47    86    89    82    64    55    53    60    73    70    57    56
+## 10 30.77 30.51 29.58 29.81 29.88 29.86 29.91 30.15 30.17 29.91 29.87 30.15
+##      X20   X21  X22   X23   X24   X25   X26   X27   X28   X29   X30   X31
+## 1     36    36   44    47    46    59    50    52    52    41    30    30
+## 2     32    33   39    45    44    52    44    45    46    36    26    25
+## 3     27    30   33    42    41    44    37    38    40    30    22    20
+## 4     30    30   39    45    46    58    31    34    42    26    10     8
+## 5     24    27   34    42    44    43    29    31    35    20     4     5
+## 6     20    25   25    37    41    29    28    29    27    10    -6     1
+## 7     89    85   89   100   100   100    70    70    76    64    50    57
+## 8     79    77   79    91    98    75    60    60    65    51    38    44
+## 9     69    69   69    82    96    49    49    50    53    37    26    31
+## 10 30.31 30.37 30.4 30.31 30.13 29.96 30.16 30.22 29.99 30.22 30.36 30.32
+\end{verbatim}
+
+Then I gather all measurements by days and I will delete NA values
+(na.rm = TRUE).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{weather_gather <-}\StringTok{ }\KeywordTok{gather}\NormalTok{(weather2, day, measurement_value, X1}\OperatorTok{:}\NormalTok{X31, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(weather_gather, }\DataTypeTok{n =} \DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    year month                  measure day measurement_value
+## 1  2014    12         Max.TemperatureF  X1                64
+## 2  2014    12        Mean.TemperatureF  X1                52
+## 3  2014    12         Min.TemperatureF  X1                39
+## 4  2014    12           Max.Dew.PointF  X1                46
+## 5  2014    12           MeanDew.PointF  X1                40
+## 6  2014    12            Min.DewpointF  X1                26
+## 7  2014    12             Max.Humidity  X1                74
+## 8  2014    12            Mean.Humidity  X1                63
+## 9  2014    12             Min.Humidity  X1                52
+## 10 2014    12 Max.Sea.Level.PressureIn  X1             30.45
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{tail}\NormalTok{(weather_gather, }\DataTypeTok{n=} \DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      year month              measure day measurement_value
+## 8813 2015    10  Max.VisibilityMiles X31                10
+## 8814 2015    10 Mean.VisibilityMiles X31                10
+## 8815 2015    10  Min.VisibilityMiles X31                10
+## 8816 2015    10    Max.Wind.SpeedMPH X31                13
+## 8817 2015    10   Mean.Wind.SpeedMPH X31                 7
+## 8818 2015    10    Max.Gust.SpeedMPH X31                17
+## 8819 2015    10      PrecipitationIn X31              0.00
+## 8820 2015    10           CloudCover X31                 4
+## 8821 2015    10               Events X31                  
+## 8822 2015    10       WindDirDegrees X31               224
+\end{verbatim}
+
+I spread the column measure to have a column for each measure.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tidy_weather <-}\StringTok{ }\KeywordTok{spread}\NormalTok{(weather_gather, measure, measurement_value)}
+\KeywordTok{head}\NormalTok{(tidy_weather, }\DataTypeTok{n =} \DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    year month day CloudCover    Events Max.Dew.PointF Max.Gust.SpeedMPH
+## 1  2014    12  X1          6      Rain             46                29
+## 2  2014    12 X10          8      Rain             45                29
+## 3  2014    12 X11          8 Rain-Snow             37                28
+## 4  2014    12 X12          7      Snow             28                21
+## 5  2014    12 X13          5                       28                23
+## 6  2014    12 X14          4                       29                20
+## 7  2014    12 X15          2                       33                21
+## 8  2014    12 X16          8      Rain             42                10
+## 9  2014    12 X17          8      Rain             46                26
+## 10 2014    12 X18          7      Rain             34                30
+##    Max.Humidity Max.Sea.Level.PressureIn Max.TemperatureF Max.VisibilityMiles
+## 1            74                    30.45               64                  10
+## 2           100                    29.58               48                  10
+## 3            92                    29.81               39                  10
+## 4            85                    29.88               39                  10
+## 5            75                    29.86               42                  10
+## 6            82                    29.91               45                  10
+## 7            89                    30.15               42                  10
+## 8            96                    30.17               44                  10
+## 9           100                    29.91               49                  10
+## 10           89                    29.87               44                  10
+##    Max.Wind.SpeedMPH Mean.Humidity Mean.Sea.Level.PressureIn Mean.TemperatureF
+## 1                 22            63                     30.13                52
+## 2                 23            95                      29.5                43
+## 3                 21            87                     29.61                36
+## 4                 16            75                     29.85                35
+## 5                 17            65                     29.82                37
+## 6                 15            68                     29.83                39
+## 7                 15            75                     30.05                37
+## 8                  8            85                     30.09                40
+## 9                 20            85                     29.75                45
+## 10                23            73                     29.78                40
+##    Mean.VisibilityMiles Mean.Wind.SpeedMPH MeanDew.PointF Min.DewpointF
+## 1                    10                 13             40            26
+## 2                     3                 13             39            37
+## 3                     7                 13             31            27
+## 4                    10                 11             27            25
+## 5                    10                 12             26            24
+## 6                    10                 10             27            25
+## 7                    10                  6             29            27
+## 8                     9                  4             36            30
+## 9                     6                 11             41            32
+## 10                   10                 14             30            26
+##    Min.Humidity Min.Sea.Level.PressureIn Min.TemperatureF Min.VisibilityMiles
+## 1            52                    30.01               39                  10
+## 2            89                    29.43               38                   1
+## 3            82                    29.44               32                   1
+## 4            64                    29.81               31                   7
+## 5            55                    29.78               32                  10
+## 6            53                    29.78               33                  10
+## 7            60                    29.91               32                  10
+## 8            73                    29.92               35                   5
+## 9            70                    29.69               41                   1
+## 10           57                    29.71               36                  10
+##    PrecipitationIn WindDirDegrees
+## 1             0.01            268
+## 2             0.28            357
+## 3             0.02            230
+## 4                T            286
+## 5                T            298
+## 6             0.00            306
+## 7             0.00            324
+## 8                T             79
+## 9             0.43            311
+## 10            0.01            281
+\end{verbatim}
+
+Finally I have in my dataset :
+
+\begin{itemize}
+\item
+  Each object / observation is presented in a different row
+\item
+  Each measured variable is presented in a different column
+\item
+  Each cell -- an intersection of given row and column -- presents a
+  value of the given variable for the given observation
+\end{itemize}
+
+Here is the \textbf{final instruction list} :
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{weather2 <-}\StringTok{ }\NormalTok{weather[, }\DecValTok{-1}\NormalTok{]}
+\NormalTok{weather_gather <-}\StringTok{ }\KeywordTok{gather}\NormalTok{(weather2, day, measurement_value, X1}\OperatorTok{:}\NormalTok{X31, }\DataTypeTok{na.rm =} \OtherTok{TRUE}\NormalTok{)}
+\NormalTok{tidy_weather <-}\StringTok{ }\KeywordTok{spread}\NormalTok{(weather_gather, measure, measurement_value)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{tidy-data}{%
+\paragraph{Tidy data}\label{tidy-data}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(tidy_weather)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   year month day CloudCover    Events Max.Dew.PointF Max.Gust.SpeedMPH
+## 1 2014    12  X1          6      Rain             46                29
+## 2 2014    12 X10          8      Rain             45                29
+## 3 2014    12 X11          8 Rain-Snow             37                28
+## 4 2014    12 X12          7      Snow             28                21
+## 5 2014    12 X13          5                       28                23
+## 6 2014    12 X14          4                       29                20
+##   Max.Humidity Max.Sea.Level.PressureIn Max.TemperatureF Max.VisibilityMiles
+## 1           74                    30.45               64                  10
+## 2          100                    29.58               48                  10
+## 3           92                    29.81               39                  10
+## 4           85                    29.88               39                  10
+## 5           75                    29.86               42                  10
+## 6           82                    29.91               45                  10
+##   Max.Wind.SpeedMPH Mean.Humidity Mean.Sea.Level.PressureIn Mean.TemperatureF
+## 1                22            63                     30.13                52
+## 2                23            95                      29.5                43
+## 3                21            87                     29.61                36
+## 4                16            75                     29.85                35
+## 5                17            65                     29.82                37
+## 6                15            68                     29.83                39
+##   Mean.VisibilityMiles Mean.Wind.SpeedMPH MeanDew.PointF Min.DewpointF
+## 1                   10                 13             40            26
+## 2                    3                 13             39            37
+## 3                    7                 13             31            27
+## 4                   10                 11             27            25
+## 5                   10                 12             26            24
+## 6                   10                 10             27            25
+##   Min.Humidity Min.Sea.Level.PressureIn Min.TemperatureF Min.VisibilityMiles
+## 1           52                    30.01               39                  10
+## 2           89                    29.43               38                   1
+## 3           82                    29.44               32                   1
+## 4           64                    29.81               31                   7
+## 5           55                    29.78               32                  10
+## 6           53                    29.78               33                  10
+##   PrecipitationIn WindDirDegrees
+## 1            0.01            268
+## 2            0.28            357
+## 3            0.02            230
+## 4               T            286
+## 5               T            298
+## 6            0.00            306
+\end{verbatim}
+
+\hypertarget{cleaning-and-preparing-the-data}{%
+\paragraph{Cleaning and preparing the
+data}\label{cleaning-and-preparing-the-data}}
+
+First thing I'm going to delete the ``X'' before the number of days in
+day column and concatenate day, month and year column into on column for
+date. I need to change the format to date so it will not be a string
+anymore.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cleaned_weather <-}\StringTok{ }\NormalTok{tidy_weather}
+\NormalTok{cleaned_weather[[}\StringTok{'day'}\NormalTok{]] <-}\StringTok{ }\KeywordTok{str_replace}\NormalTok{(cleaned_weather[[}\StringTok{'day'}\NormalTok{]], }\StringTok{"X"}\NormalTok{, }\StringTok{""}\NormalTok{)}
+\NormalTok{cleaned_weather <-}\StringTok{ }\KeywordTok{unite}\NormalTok{(cleaned_weather, date, year, month, day, }\DataTypeTok{sep =} \StringTok{"/"}\NormalTok{)}
+\NormalTok{cleaned_weather[[}\StringTok{'date'}\NormalTok{]] <-}\StringTok{ }\KeywordTok{as.Date}\NormalTok{(cleaned_weather[[}\StringTok{'date'}\NormalTok{]], }\StringTok{"%Y/%m/%d"}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(cleaned_weather)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         date CloudCover    Events Max.Dew.PointF Max.Gust.SpeedMPH Max.Humidity
+## 1 2014-12-01          6      Rain             46                29           74
+## 2 2014-12-10          8      Rain             45                29          100
+## 3 2014-12-11          8 Rain-Snow             37                28           92
+## 4 2014-12-12          7      Snow             28                21           85
+## 5 2014-12-13          5                       28                23           75
+## 6 2014-12-14          4                       29                20           82
+##   Max.Sea.Level.PressureIn Max.TemperatureF Max.VisibilityMiles
+## 1                    30.45               64                  10
+## 2                    29.58               48                  10
+## 3                    29.81               39                  10
+## 4                    29.88               39                  10
+## 5                    29.86               42                  10
+## 6                    29.91               45                  10
+##   Max.Wind.SpeedMPH Mean.Humidity Mean.Sea.Level.PressureIn Mean.TemperatureF
+## 1                22            63                     30.13                52
+## 2                23            95                      29.5                43
+## 3                21            87                     29.61                36
+## 4                16            75                     29.85                35
+## 5                17            65                     29.82                37
+## 6                15            68                     29.83                39
+##   Mean.VisibilityMiles Mean.Wind.SpeedMPH MeanDew.PointF Min.DewpointF
+## 1                   10                 13             40            26
+## 2                    3                 13             39            37
+## 3                    7                 13             31            27
+## 4                   10                 11             27            25
+## 5                   10                 12             26            24
+## 6                   10                 10             27            25
+##   Min.Humidity Min.Sea.Level.PressureIn Min.TemperatureF Min.VisibilityMiles
+## 1           52                    30.01               39                  10
+## 2           89                    29.43               38                   1
+## 3           82                    29.44               32                   1
+## 4           64                    29.81               31                   7
+## 5           55                    29.78               32                  10
+## 6           53                    29.78               33                  10
+##   PrecipitationIn WindDirDegrees
+## 1            0.01            268
+## 2            0.28            357
+## 3            0.02            230
+## 4               T            286
+## 5               T            298
+## 6            0.00            306
+\end{verbatim}
+
+Also, I saw that there are ``T'' in precipitation column. It means
+``trace'' and we can change this by 0.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cleaned_weather[[}\StringTok{'PrecipitationIn'}\NormalTok{]] <-}\StringTok{ }\KeywordTok{str_replace}\NormalTok{(cleaned_weather[[}\StringTok{'PrecipitationIn'}\NormalTok{]], }\StringTok{"T"}\NormalTok{, }\StringTok{"0.00"}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(cleaned_weather)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         date CloudCover    Events Max.Dew.PointF Max.Gust.SpeedMPH Max.Humidity
+## 1 2014-12-01          6      Rain             46                29           74
+## 2 2014-12-10          8      Rain             45                29          100
+## 3 2014-12-11          8 Rain-Snow             37                28           92
+## 4 2014-12-12          7      Snow             28                21           85
+## 5 2014-12-13          5                       28                23           75
+## 6 2014-12-14          4                       29                20           82
+##   Max.Sea.Level.PressureIn Max.TemperatureF Max.VisibilityMiles
+## 1                    30.45               64                  10
+## 2                    29.58               48                  10
+## 3                    29.81               39                  10
+## 4                    29.88               39                  10
+## 5                    29.86               42                  10
+## 6                    29.91               45                  10
+##   Max.Wind.SpeedMPH Mean.Humidity Mean.Sea.Level.PressureIn Mean.TemperatureF
+## 1                22            63                     30.13                52
+## 2                23            95                      29.5                43
+## 3                21            87                     29.61                36
+## 4                16            75                     29.85                35
+## 5                17            65                     29.82                37
+## 6                15            68                     29.83                39
+##   Mean.VisibilityMiles Mean.Wind.SpeedMPH MeanDew.PointF Min.DewpointF
+## 1                   10                 13             40            26
+## 2                    3                 13             39            37
+## 3                    7                 13             31            27
+## 4                   10                 11             27            25
+## 5                   10                 12             26            24
+## 6                   10                 10             27            25
+##   Min.Humidity Min.Sea.Level.PressureIn Min.TemperatureF Min.VisibilityMiles
+## 1           52                    30.01               39                  10
+## 2           89                    29.43               38                   1
+## 3           82                    29.44               32                   1
+## 4           64                    29.81               31                   7
+## 5           55                    29.78               32                  10
+## 6           53                    29.78               33                  10
+##   PrecipitationIn WindDirDegrees
+## 1            0.01            268
+## 2            0.28            357
+## 3            0.02            230
+## 4            0.00            286
+## 5            0.00            298
+## 6            0.00            306
+\end{verbatim}
+
+And finally change our values' format to numeric ones so I can use
+summary function after. To do so, I need to first to switch Events and
+CloudCover columns.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cleaned_weather <-}\StringTok{ }\KeywordTok{select}\NormalTok{(cleaned_weather, date, Events, CloudCover}\OperatorTok{:}\NormalTok{WindDirDegrees)}
+\NormalTok{cleaned_weather[, }\DecValTok{3}\OperatorTok{:}\DecValTok{23}\NormalTok{] <-}\StringTok{ }\KeywordTok{sapply}\NormalTok{(cleaned_weather[, }\DecValTok{3}\OperatorTok{:}\DecValTok{23}\NormalTok{], as.numeric)}
+\KeywordTok{head}\NormalTok{(cleaned_weather)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         date    Events CloudCover Max.Dew.PointF Max.Gust.SpeedMPH Max.Humidity
+## 1 2014-12-01      Rain          6             46                29           74
+## 2 2014-12-10      Rain          8             45                29          100
+## 3 2014-12-11 Rain-Snow          8             37                28           92
+## 4 2014-12-12      Snow          7             28                21           85
+## 5 2014-12-13                    5             28                23           75
+## 6 2014-12-14                    4             29                20           82
+##   Max.Sea.Level.PressureIn Max.TemperatureF Max.VisibilityMiles
+## 1                    30.45               64                  10
+## 2                    29.58               48                  10
+## 3                    29.81               39                  10
+## 4                    29.88               39                  10
+## 5                    29.86               42                  10
+## 6                    29.91               45                  10
+##   Max.Wind.SpeedMPH Mean.Humidity Mean.Sea.Level.PressureIn Mean.TemperatureF
+## 1                22            63                     30.13                52
+## 2                23            95                     29.50                43
+## 3                21            87                     29.61                36
+## 4                16            75                     29.85                35
+## 5                17            65                     29.82                37
+## 6                15            68                     29.83                39
+##   Mean.VisibilityMiles Mean.Wind.SpeedMPH MeanDew.PointF Min.DewpointF
+## 1                   10                 13             40            26
+## 2                    3                 13             39            37
+## 3                    7                 13             31            27
+## 4                   10                 11             27            25
+## 5                   10                 12             26            24
+## 6                   10                 10             27            25
+##   Min.Humidity Min.Sea.Level.PressureIn Min.TemperatureF Min.VisibilityMiles
+## 1           52                    30.01               39                  10
+## 2           89                    29.43               38                   1
+## 3           82                    29.44               32                   1
+## 4           64                    29.81               31                   7
+## 5           55                    29.78               32                  10
+## 6           53                    29.78               33                  10
+##   PrecipitationIn WindDirDegrees
+## 1            0.01            268
+## 2            0.28            357
+## 3            0.02            230
+## 4            0.00            286
+## 5            0.00            298
+## 6            0.00            306
+\end{verbatim}
+
+Now that everything is fine I can check if there are missing values.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(cleaned_weather)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       date               Events            CloudCover    Max.Dew.PointF 
+##  Min.   :2014-12-01   Length:366         Min.   :0.000   Min.   :-6.00  
+##  1st Qu.:2015-03-02   Class :character   1st Qu.:3.000   1st Qu.:32.00  
+##  Median :2015-06-01   Mode  :character   Median :5.000   Median :47.50  
+##  Mean   :2015-06-01                      Mean   :4.708   Mean   :45.48  
+##  3rd Qu.:2015-08-31                      3rd Qu.:7.000   3rd Qu.:61.00  
+##  Max.   :2015-12-01                      Max.   :8.000   Max.   :75.00  
+##                                                                         
+##  Max.Gust.SpeedMPH  Max.Humidity     Max.Sea.Level.PressureIn Max.TemperatureF
+##  Min.   : 0.00     Min.   :  39.00   Min.   :29.58            Min.   :18.00   
+##  1st Qu.:21.00     1st Qu.:  73.25   1st Qu.:30.00            1st Qu.:42.00   
+##  Median :25.50     Median :  86.00   Median :30.14            Median :60.00   
+##  Mean   :26.99     Mean   :  85.69   Mean   :30.16            Mean   :58.93   
+##  3rd Qu.:31.25     3rd Qu.:  93.00   3rd Qu.:30.31            3rd Qu.:76.00   
+##  Max.   :94.00     Max.   :1000.00   Max.   :30.88            Max.   :96.00   
+##  NA's   :6                                                                    
+##  Max.VisibilityMiles Max.Wind.SpeedMPH Mean.Humidity  
+##  Min.   : 2.000      Min.   : 8.00     Min.   :28.00  
+##  1st Qu.:10.000      1st Qu.:16.00     1st Qu.:56.00  
+##  Median :10.000      Median :20.00     Median :66.00  
+##  Mean   : 9.907      Mean   :20.62     Mean   :66.02  
+##  3rd Qu.:10.000      3rd Qu.:24.00     3rd Qu.:76.75  
+##  Max.   :10.000      Max.   :38.00     Max.   :98.00  
+##                                                       
+##  Mean.Sea.Level.PressureIn Mean.TemperatureF Mean.VisibilityMiles
+##  Min.   :29.49             Min.   : 8.00     Min.   :-1.000      
+##  1st Qu.:29.87             1st Qu.:36.25     1st Qu.: 8.000      
+##  Median :30.03             Median :53.50     Median :10.000      
+##  Mean   :30.04             Mean   :51.40     Mean   : 8.861      
+##  3rd Qu.:30.19             3rd Qu.:68.00     3rd Qu.:10.000      
+##  Max.   :30.77             Max.   :84.00     Max.   :10.000      
+##                                                                  
+##  Mean.Wind.SpeedMPH MeanDew.PointF   Min.DewpointF     Min.Humidity  
+##  Min.   : 4.00      Min.   :-11.00   Min.   :-18.00   Min.   :16.00  
+##  1st Qu.: 8.00      1st Qu.: 24.00   1st Qu.: 16.25   1st Qu.:35.00  
+##  Median :10.00      Median : 41.00   Median : 35.00   Median :46.00  
+##  Mean   :10.68      Mean   : 38.96   Mean   : 32.25   Mean   :48.31  
+##  3rd Qu.:13.00      3rd Qu.: 56.00   3rd Qu.: 51.00   3rd Qu.:60.00  
+##  Max.   :22.00      Max.   : 71.00   Max.   : 68.00   Max.   :96.00  
+##                                                                      
+##  Min.Sea.Level.PressureIn Min.TemperatureF Min.VisibilityMiles PrecipitationIn 
+##  Min.   :29.16            Min.   :-3.00    Min.   : 0.000      Min.   :0.0000  
+##  1st Qu.:29.76            1st Qu.:30.00    1st Qu.: 2.000      1st Qu.:0.0000  
+##  Median :29.94            Median :46.00    Median :10.000      Median :0.0000  
+##  Mean   :29.93            Mean   :43.33    Mean   : 6.716      Mean   :0.1016  
+##  3rd Qu.:30.09            3rd Qu.:60.00    3rd Qu.:10.000      3rd Qu.:0.0400  
+##  Max.   :30.64            Max.   :74.00    Max.   :10.000      Max.   :2.9000  
+##                                                                                
+##  WindDirDegrees 
+##  Min.   :  1.0  
+##  1st Qu.:113.0  
+##  Median :222.0  
+##  Mean   :200.1  
+##  3rd Qu.:275.0  
+##  Max.   :360.0  
+## 
+\end{verbatim}
+
+We can see that there are 6 NA values in Max.Gust.SpeedMPH, we know
+thanks to head that there are Empty values in Events too. We can also
+see that there is a mistake in Max.Humidity column. Humidity is measured
+by \% so the maximum should be 100 instead of 1000.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cleaned_weather[[}\StringTok{"Events"}\NormalTok{]][cleaned_weather[[}\StringTok{"Events"}\NormalTok{]] }\OperatorTok{==}\StringTok{ ""}\NormalTok{] <-}\StringTok{ "none"}
+\NormalTok{cleaned_weather[[}\StringTok{"Max.Humidity"}\NormalTok{]][cleaned_weather[[}\StringTok{"Max.Humidity"}\NormalTok{]] }\OperatorTok{==}\StringTok{ }\DecValTok{1000}\NormalTok{] <-}\StringTok{ }\DecValTok{100}
+\end{Highlighting}
+\end{Shaded}
+
+As I don't know what to do with NA values in Max.Gust.SpeedMPH I decided
+to leave it like that.
+
+\hypertarget{the-code-book-with-final-cleaned-dataset}{%
+\paragraph{The code book with final cleaned
+dataset}\label{the-code-book-with-final-cleaned-dataset}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(cleaned_weather)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         date    Events CloudCover Max.Dew.PointF Max.Gust.SpeedMPH Max.Humidity
+## 1 2014-12-01      Rain          6             46                29           74
+## 2 2014-12-10      Rain          8             45                29          100
+## 3 2014-12-11 Rain-Snow          8             37                28           92
+## 4 2014-12-12      Snow          7             28                21           85
+## 5 2014-12-13      none          5             28                23           75
+## 6 2014-12-14      none          4             29                20           82
+##   Max.Sea.Level.PressureIn Max.TemperatureF Max.VisibilityMiles
+## 1                    30.45               64                  10
+## 2                    29.58               48                  10
+## 3                    29.81               39                  10
+## 4                    29.88               39                  10
+## 5                    29.86               42                  10
+## 6                    29.91               45                  10
+##   Max.Wind.SpeedMPH Mean.Humidity Mean.Sea.Level.PressureIn Mean.TemperatureF
+## 1                22            63                     30.13                52
+## 2                23            95                     29.50                43
+## 3                21            87                     29.61                36
+## 4                16            75                     29.85                35
+## 5                17            65                     29.82                37
+## 6                15            68                     29.83                39
+##   Mean.VisibilityMiles Mean.Wind.SpeedMPH MeanDew.PointF Min.DewpointF
+## 1                   10                 13             40            26
+## 2                    3                 13             39            37
+## 3                    7                 13             31            27
+## 4                   10                 11             27            25
+## 5                   10                 12             26            24
+## 6                   10                 10             27            25
+##   Min.Humidity Min.Sea.Level.PressureIn Min.TemperatureF Min.VisibilityMiles
+## 1           52                    30.01               39                  10
+## 2           89                    29.43               38                   1
+## 3           82                    29.44               32                   1
+## 4           64                    29.81               31                   7
+## 5           55                    29.78               32                  10
+## 6           53                    29.78               33                  10
+##   PrecipitationIn WindDirDegrees
+## 1            0.01            268
+## 2            0.28            357
+## 3            0.02            230
+## 4            0.00            286
+## 5            0.00            298
+## 6            0.00            306
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(cleaned_weather)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       date               Events            CloudCover    Max.Dew.PointF 
+##  Min.   :2014-12-01   Length:366         Min.   :0.000   Min.   :-6.00  
+##  1st Qu.:2015-03-02   Class :character   1st Qu.:3.000   1st Qu.:32.00  
+##  Median :2015-06-01   Mode  :character   Median :5.000   Median :47.50  
+##  Mean   :2015-06-01                      Mean   :4.708   Mean   :45.48  
+##  3rd Qu.:2015-08-31                      3rd Qu.:7.000   3rd Qu.:61.00  
+##  Max.   :2015-12-01                      Max.   :8.000   Max.   :75.00  
+##                                                                         
+##  Max.Gust.SpeedMPH  Max.Humidity    Max.Sea.Level.PressureIn Max.TemperatureF
+##  Min.   : 0.00     Min.   : 39.00   Min.   :29.58            Min.   :18.00   
+##  1st Qu.:21.00     1st Qu.: 73.25   1st Qu.:30.00            1st Qu.:42.00   
+##  Median :25.50     Median : 86.00   Median :30.14            Median :60.00   
+##  Mean   :26.99     Mean   : 83.23   Mean   :30.16            Mean   :58.93   
+##  3rd Qu.:31.25     3rd Qu.: 93.00   3rd Qu.:30.31            3rd Qu.:76.00   
+##  Max.   :94.00     Max.   :100.00   Max.   :30.88            Max.   :96.00   
+##  NA's   :6                                                                   
+##  Max.VisibilityMiles Max.Wind.SpeedMPH Mean.Humidity  
+##  Min.   : 2.000      Min.   : 8.00     Min.   :28.00  
+##  1st Qu.:10.000      1st Qu.:16.00     1st Qu.:56.00  
+##  Median :10.000      Median :20.00     Median :66.00  
+##  Mean   : 9.907      Mean   :20.62     Mean   :66.02  
+##  3rd Qu.:10.000      3rd Qu.:24.00     3rd Qu.:76.75  
+##  Max.   :10.000      Max.   :38.00     Max.   :98.00  
+##                                                       
+##  Mean.Sea.Level.PressureIn Mean.TemperatureF Mean.VisibilityMiles
+##  Min.   :29.49             Min.   : 8.00     Min.   :-1.000      
+##  1st Qu.:29.87             1st Qu.:36.25     1st Qu.: 8.000      
+##  Median :30.03             Median :53.50     Median :10.000      
+##  Mean   :30.04             Mean   :51.40     Mean   : 8.861      
+##  3rd Qu.:30.19             3rd Qu.:68.00     3rd Qu.:10.000      
+##  Max.   :30.77             Max.   :84.00     Max.   :10.000      
+##                                                                  
+##  Mean.Wind.SpeedMPH MeanDew.PointF   Min.DewpointF     Min.Humidity  
+##  Min.   : 4.00      Min.   :-11.00   Min.   :-18.00   Min.   :16.00  
+##  1st Qu.: 8.00      1st Qu.: 24.00   1st Qu.: 16.25   1st Qu.:35.00  
+##  Median :10.00      Median : 41.00   Median : 35.00   Median :46.00  
+##  Mean   :10.68      Mean   : 38.96   Mean   : 32.25   Mean   :48.31  
+##  3rd Qu.:13.00      3rd Qu.: 56.00   3rd Qu.: 51.00   3rd Qu.:60.00  
+##  Max.   :22.00      Max.   : 71.00   Max.   : 68.00   Max.   :96.00  
+##                                                                      
+##  Min.Sea.Level.PressureIn Min.TemperatureF Min.VisibilityMiles PrecipitationIn 
+##  Min.   :29.16            Min.   :-3.00    Min.   : 0.000      Min.   :0.0000  
+##  1st Qu.:29.76            1st Qu.:30.00    1st Qu.: 2.000      1st Qu.:0.0000  
+##  Median :29.94            Median :46.00    Median :10.000      Median :0.0000  
+##  Mean   :29.93            Mean   :43.33    Mean   : 6.716      Mean   :0.1016  
+##  3rd Qu.:30.09            3rd Qu.:60.00    3rd Qu.:10.000      3rd Qu.:0.0400  
+##  Max.   :30.64            Max.   :74.00    Max.   :10.000      Max.   :2.9000  
+##                                                                                
+##  WindDirDegrees 
+##  Min.   :  1.0  
+##  1st Qu.:113.0  
+##  Median :222.0  
+##  Mean   :200.1  
+##  3rd Qu.:275.0  
+##  Max.   :360.0  
+## 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{boxplot}\NormalTok{(cleaned_weather[, }\DecValTok{3}\OperatorTok{:}\DecValTok{22}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{task_files/figure-latex/unnamed-chunk-23-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{boxplot}\NormalTok{(cleaned_weather[,}\DecValTok{23}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{task_files/figure-latex/unnamed-chunk-23-2.pdf}
+
+\hypertarget{task-4}{%
+\section{Task 4}\label{task-4}}
+
+\hypertarget{function-dplyr}{%
+\subsubsection{function + dplyr}\label{function-dplyr}}
+
+Instructions are to do the same as for task 1 and 2 but by using dplyr
+functions.
+
+\end{document}

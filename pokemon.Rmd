@@ -1,0 +1,153 @@
+---
+title: "pokemon"
+author: "Camille Benoit"
+date: "29/12/2020"
+output: html_document
+---
+```{r}
+.libPaths("C:/Program Files (x86)/R/win-library/4.0")
+library(dplyr)
+library(ggplot2)
+```
+
+## Loading and display
+
+```{r}
+data = read.csv("./project/Pokemon.csv", header = TRUE, sep = ",")
+```
+
+```{r}
+head(data)
+```
+
+```{r}
+summary(data)
+```
+
+## Some manipulations
+
+```{r}
+data$Number <- data$X
+data <- data[,-1] %>% 
+  select(Number, Name:Legendary)
+data[["Type.2"]][data[["Type.2"]] == ""] <- "None"
+data[["Legendary"]] <- data[["Legendary"]] %>% 
+                          as.logical()
+data$Generation <- as.factor(data$Generation)
+```
+
+We want to work with gen1 to gen4 without legendary pokemon.
+
+```{r}
+gen1 <- data %>% 
+  filter(!grepl("Mega", Name, fixed = TRUE) & Generation == 1 & Legendary == FALSE)
+
+gen2 <- data %>% 
+  filter(!grepl("Mega", Name, fixed = TRUE) & Generation == 2 & Legendary == FALSE)
+
+gen3 <- data %>% 
+  filter(!grepl("Mega", Name, fixed = TRUE) & Generation == 3 & Legendary == FALSE)
+
+gen1to3<- data %>% 
+  filter(!grepl("Mega", Name, fixed = TRUE) & as.numeric(Generation) < 4 & Legendary == FALSE)
+```
+
+## Some ideas 
+
+We want to compare some statistics between different generations / types.
+
+```{r}
+gen1 %>% ggplot(aes(x= Attack, y= Defense, color = Type.1)) + geom_point() + facet_wrap(Type.1 ~ .)
+```
+
+```{r}
+gen2 %>% ggplot(aes(x= Attack, y= Defense, color = Type.1)) + geom_point() + facet_wrap(Type.1 ~ .)
+```
+
+```{r}
+gen3 %>% ggplot(aes(x= Attack, y= Defense, color = Type.1)) + geom_point() + facet_wrap(Type.1 ~ .)
+```
+
+example : we want to compare water type
+
+```{r}
+gen1to3 %>% filter(Type.1 == "Water") %>% 
+  ggplot(aes(x= Attack, y= Defense, color = Generation)) + geom_point()
+```
+
+or
+
+```{r}
+gen1to3 %>% filter(Type.1 == "Fire") %>% 
+  ggplot(aes(x= Attack, y= Defense, color = Generation)) + geom_point() +
+  facet_wrap(. ~ Generation)
+```
+
+Distribution of Attack by types over generation.
+```{r}
+gen1to3 %>% 
+  ggplot(aes(x= HP, fill = Generation, color = Generation)) + 
+  geom_density(alpha = 0.3) + guides(fill = F)
+```
+
+```{r}
+gen1to3 %>% 
+  ggplot(aes(x= Attack, fill = Generation, color = Generation)) + 
+  geom_density(alpha = 0.3) + guides(fill = F)
+```
+
+```{r}
+gen1to3 %>% 
+  ggplot(aes(x= Defense, fill = Generation, color = Generation)) + 
+  geom_density(alpha = 0.3) + guides(fill = F)
+```
+
+Means of HP, attack, defense, etc... by types over generations. Does it changes a lot ? Is there some types which are better ?
+
+```{r}
+gen1 %>% 
+  select(Type.1, HP:Speed) %>% 
+    group_by(Type.1) %>% 
+      summarize_all(funs(if(is.numeric(.)) mean(.) else table(.)))
+```
+
+```{r}
+gen2 %>% 
+  select(Type.1, HP:Speed) %>% 
+    group_by(Type.1) %>% 
+      summarize_all(funs(if(is.numeric(.)) mean(.) else table(.)))
+```
+
+```{r}
+gen3 %>% 
+  select(Type.1, HP:Speed) %>% 
+    group_by(Type.1) %>% 
+      summarize_all(funs(if(is.numeric(.)) mean(.) else table(.)))
+```
+
+Number of pokemon by types for gen1.
+
+```{r}
+gen1 %>% ggplot(aes(x=Type.1, fill = Type.1)) + geom_bar()
+```
+
+Evolution of number of water types through generations.
+
+```{r}
+data %>% 
+  filter(Type.1 == "Water") %>% 
+  select(Type.1, Generation) %>% 
+  ggplot(aes(x=Generation, fill = Generation)) + geom_bar()
+
+```
+
+Mean of attack for water types pokemon through generations.
+
+```{r}
+data %>% 
+  filter(Type.1 == "Water") %>%  
+  select(Type.1, Generation, Attack) %>%  
+  group_by(Generation) %>%  
+  summarise(meanAttack = mean(Attack), .groups = "drop") %>% 
+  ggplot(aes(x=Generation, y= meanAttack, color = Generation)) + geom_bar(stat =  "identity")
+```
